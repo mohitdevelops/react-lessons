@@ -6,9 +6,7 @@ export default function ProductItems(props) {
 
 	const [dateYear, setDateYear] = useState();
 
-	setDateYear(year){
-		console.log('test');
-	}
+	setDateYear('test');
 	
 	return (
 		<div className="productItemsWrapper">
