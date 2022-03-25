@@ -14,6 +14,20 @@ export default function App() {
 			price: 360000,
       image: 'https://cdn.pixabay.com/photo/2020/12/04/16/15/watch-5803619__340.jpg',
 		},
+    {
+			name: "Shampoo",
+			des: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+			date: new Date(2021, 8, 8),
+			price: 360,
+      image: 'https://img.freepik.com/free-photo/shampoo-bottle-butterfly-pea-flower-put-white-wooden-background_1150-28107.jpg?size=626&ext=jpg&ga=GA1.2.482173369.1648044063',
+		},
+    {
+			name: "Chair",
+			des: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web pag",
+			date: new Date(2019, 1, 30),
+			price: 1400,
+      image: 'https://img.freepik.com/free-photo/blue-dining-room-chair-room-with-gray-walls_181624-30430.jpg?size=626&ext=jpg&ga=GA1.2.482173369.1648044063',
+		},
 	];
 
   const [productLists, setProductList] = useState(ALL_PRODUCTS);
