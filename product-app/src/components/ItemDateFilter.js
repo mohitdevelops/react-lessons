@@ -1,11 +1,15 @@
 import { useState } from "react"
-export default function ItemDateFilter(){
+export default function ItemDateFilter(props){
 
     const [filterValue, setFilterValue] = useState('2022');
 
     function onFilterDateValue(event){
-       setFilterValue(event.target.value);                
+       setFilterValue(event.target.value);                     
     }
+
+    const filteredYearValue = productListItems.filter(e => {
+        return e.date.getFullYear().toString() === filterValue;
+    })
 
     return(
         <div>
