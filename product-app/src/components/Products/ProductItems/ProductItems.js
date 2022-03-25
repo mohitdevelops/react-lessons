@@ -1,9 +1,18 @@
 import Items from "./Items";
+import ItemDateFilter from "../../ItemDateFilter";
+import { useState } from "react";
 
 export default function ProductItems(props) {
+
+	const [dateYear, setDateYear] = useState();
+
+	setDateYear(year){
+		console.log('test');
+	}
 	
 	return (
 		<div className="productItemsWrapper">
+			<ItemDateFilter filteredYearValue={dateYear}/>
 			{props.productListItems.map(function (items) {
 				return (
 					<Items
