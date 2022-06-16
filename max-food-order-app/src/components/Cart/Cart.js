@@ -1,5 +1,6 @@
 import Modal from "../UI/Modal";
 import modules from "./Cart.module.css";
+import { CartShow } from "../../App";
 
 export default function Cart(props) {
 	const cartitems = (
@@ -11,7 +12,9 @@ export default function Cart(props) {
 					amount: 2,
 					price: 150,
 				},
-			].map(items => <li>{items.name}</li>)}			
+			].map((items) => (
+				<li>{items.name}</li>
+			))}
 		</ul>
 	);
 	return (
@@ -22,7 +25,11 @@ export default function Cart(props) {
 				<span>5465</span>
 			</div>
 			<div className={modules.actions}>
-				<button className={modules["button--alt"]}>Close</button>
+				<CartShow.Consumer>
+					{(hide) => {
+						return <button onClick={hide.hide} className={modules["button--alt"]}>Close</button>;
+					}}
+				</CartShow.Consumer>
 				<button className={modules.button}>Order</button>
 			</div>
 		</Modal>
