@@ -8,21 +8,22 @@ const CartShow = createContext();
 function App() {
 	const [cartModal, setCartModal] = useState(false);
 
-  const showCartModal = () => {
-    setCartModal(true);
-  }
+	const showCartModal = () => {
+		setCartModal(true);
+	};
 
-  const hideCartModal = () =>{
-    setCartModal(false);
-  }
+	const hideCartModal = () => {
+		setCartModal(false);
+	};
 
 	return (
-		<Fragment>
-			{cartModal && <Cart />}
-			<CartShow.Provider value={{
-        show: showCartModal,
-        hide: hideCartModal,
-      }}>
+		<Fragment>			
+			<CartShow.Provider
+				value={{
+					show: showCartModal,
+					hide: hideCartModal,
+				}}>
+				{cartModal && <Cart />}
 				<Header></Header>
 			</CartShow.Provider>
 			<main>
