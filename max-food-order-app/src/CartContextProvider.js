@@ -7,10 +7,16 @@ const initialCartState = {
 };
 
 const CartContextProvider = (props) => {
+
 	const [cartState, dispatchCartState] = useReducer((prevState, action) => {
 		if (action.name === "ADD") {
 			const updatedItem = prevState.item.concat(action.cartItem);
-			const updatedTotalAmount = prevState.totalAmount + action.cartItem.price;
+			const updatedTotalAmount =
+				prevState.totalAmount + action.cartItem.price * action.cartItem.amount;
+				return {
+					item: updatedItem,
+					totalAmount: updatedTotalAmount,
+				}
 		}
 		return initialCartState;
 	}, initialCartState);
@@ -20,8 +26,8 @@ const CartContextProvider = (props) => {
 	};
 
 	const removeItemFromCartHandler = (id) => {
-        dispatchCartState({ name: "REMOVE", cartItemId: id,});
-    };
+		dispatchCartState({ name: "REMOVE", cartItemId: id });
+	};
 
 	const cartCtx = {
 		item: cartState.item,
