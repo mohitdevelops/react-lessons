@@ -1,9 +1,8 @@
-import { createContext, Fragment, useState } from "react";
+import { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
-
-const CartShow = createContext();
+import CartContextProvider from "./components/store/CartContextProvider";
 
 function App() {
 	const [cartModal, setCartModal] = useState(false);
@@ -17,21 +16,14 @@ function App() {
 	};
 
 	return (
-		<Fragment>			
-			<CartShow.Provider
-				value={{
-					show: showCartModal,
-					hide: hideCartModal,
-				}}>
-				{cartModal && <Cart />}
-				<Header></Header>
-			</CartShow.Provider>
+		<CartContextProvider>
+			{cartModal && <Cart onClose={hideCartModal} />}
+			<Header onShowCart={showCartModal} />
 			<main>
 				<Meals />
 			</main>
-		</Fragment>
+		</CartContextProvider>
 	);
 }
 
 export default App;
-export { CartShow };

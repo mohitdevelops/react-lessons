@@ -1,33 +1,27 @@
 import { BsFillCartFill } from "react-icons/bs";
 import modules from "./HeaderCartButton.module.css";
-import { CartShow } from "../../App";
-import CartContext from "../../cart-context";
+import CartContext from "../store/cart-context";
 import { useContext } from "react";
 
 const HeaderCartButton = (props) => {
-	const cartItemContext = useContext(CartContext);
 
-	const numberOfCartItems = cartItemContext.item.reduce(
-		(currentNumber, item) => {
-			return currentNumber + item.totalAmount;
+	const cartCtx = useContext(CartContext)
+
+	const numberOfCartItems = cartCtx.item.reduce(
+		(currentNumber, cartitem) => {
+			return currentNumber + cartitem.amount;
 		},
 		0
 	);
 
 	return (
-		<CartShow.Consumer>
-			{(show) => {
-				return (
-					<button className={modules.button} onClick={show.show}>
-						<span className={modules.icon}>
-							<BsFillCartFill />
-						</span>
-						<span>Your Cart</span>
-						<span className={modules.badge}>{numberOfCartItems}</span>
-					</button>
-				);
-			}}
-		</CartShow.Consumer>
+		<button className={modules.button} onClick={props.onClick}>
+			<span className={modules.icon}>
+				<BsFillCartFill />
+			</span>
+			<span>Your Cart</span>
+			<span className={modules.badge}>{numberOfCartItems}</span>
+		</button>
 	);
 };
 export default HeaderCartButton;

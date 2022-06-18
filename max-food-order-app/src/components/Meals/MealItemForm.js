@@ -4,9 +4,9 @@ import Inputs from "../UI/Inputs";
 import modules from "./MealItemForm.module.css";
 
 export default function MealItemForm(props) {
-	const [amountIsValid, setAmountIsValid] = useState(true);
-
 	const amountInputRef = useRef();
+	
+	const [amountIsValid, setAmountIsValid] = useState(true);
 
 	const formSubmit = (event) => {
 		event.preventDefault();
@@ -22,7 +22,6 @@ export default function MealItemForm(props) {
 			setAmountIsValid(false);
 			return;
 		}
-
 		props.onAddtoCart(enteredAmountNumber);
 	};
 

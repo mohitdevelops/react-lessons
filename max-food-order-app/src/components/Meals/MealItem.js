@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import CartContext from '../../cart-context';
+import CartContext from '../store/cart-context';
 import modules from './MealItem.module.css';
 import MealItemForm from './MealItemForm';
 
@@ -13,6 +13,7 @@ export default function MealItem (props){
         cartCtxt.addItem({
             id: props.id,
             name: props.name,
+            amount: amount,
             price: props.price,
         })
     }
